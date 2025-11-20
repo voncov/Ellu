@@ -10,7 +10,7 @@
 void main(void) {
     COMX_PORT port = COM1;
     init_serial(port);
-    STDIO_TYPE mode = SERIAL;
+    IO_MODE mode = SERIAL;
     set_io_mode(mode);
     print("Hello, World!");
     while (1);
