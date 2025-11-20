@@ -5,7 +5,5 @@
 #include <cpu/procio.h>
 
 void main(void) {
-    while (1) {}
-    // Альтернативный метод, если вариант сверху падёт из-за break;
-    halt();
+    while (1);
 }
