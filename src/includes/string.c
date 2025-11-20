@@ -1,18 +1,6 @@
 /**
- * Путь: src/includes/string.c
- * 
- * Вспомогательный файл для строк
- * 
- * Изменения:
- *      16 Nov, 11:45 :: Файл создан.
- *      16 Nov, 13:34 :: Написаны основные функции.
+ * libc-модуль управления строковыми данными.
  */
-#include "stdarg.h"
-#include "stdint.h"
-#include "string.h"
-
-#include "stdarg.h"
-#include "stdint.h"
 #include "string.h"
 
 static void buf_putc(char* buffer, size_t size, size_t* pos, char c) {

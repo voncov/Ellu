@@ -1,12 +1,9 @@
 /**
- * Путь: src/multarch/i386/cpu/procio.h
+ * Заголовочный файл модуля управления портами процессора Intel x86_x64
  * 
- * Вспомогательный файл для управления портами процессора Intel x86_x64
- * 
- * Взято из https://wiki.osdev.org/Inline_Assembly/Examples
- * 
- * Изменения:
- *      13 Nov, 16:38 :: Файл создан.
+ * Источники, взятые за пример:
+ *      https://wiki.osdev.org/Inline_Assembly/Examples
+ *      https://wiki.osdev.org/Shutdown
  */
 #pragma once
 
@@ -15,7 +12,7 @@
 /**
  * ### halt
  * 
- * Вызывает зависание процессора до перезагрузки (нажатия Ctrl+Alt+Del)
+ * Зависание процессора до перезагрузки (нажатия Ctrl+Alt+Del)
  */
 static inline void halt(void)
 {
@@ -25,7 +22,7 @@ static inline void halt(void)
 /**
  * ### interrupts_enable
  * 
- * Включает прерывания процессора
+ * Включить прерывания процессора
  */
 static inline void interrupts_enable(void)
 {
@@ -35,7 +32,7 @@ static inline void interrupts_enable(void)
 /**
  * ### interrupts_disable
  * 
- * Выключает прерывания процессора
+ * Выключить прерывания процессора
  */
 static inline void interrupts_disable(void)
 {
@@ -45,7 +42,7 @@ static inline void interrupts_disable(void)
 /**
  * ### outb
  * 
- * Отправляет 8-разрядное значение в место ввода/вывода.
+ * Отправить 8-разрядное значение в место ввода/вывода.
  */
 static inline void outb(uint16_t port, uint8_t val)
 {
@@ -55,7 +52,7 @@ static inline void outb(uint16_t port, uint8_t val)
 /**
  * ### outw
  * 
- * Отправляет 16-разрядное значение в место ввода/вывода.
+ * Отправить 16-разрядное значение в место ввода/вывода.
  */
 static inline void outw(uint16_t port, uint16_t val)
 {
@@ -65,7 +62,7 @@ static inline void outw(uint16_t port, uint16_t val)
 /**
  * ### outl
  * 
- * Отправляет 32-разрядное значение в место ввода/вывода.
+ * Отправить 32-разрядное значение в место ввода/вывода.
  */
 static inline void outl(uint16_t port, uint32_t val)
 {
@@ -75,7 +72,7 @@ static inline void outl(uint16_t port, uint32_t val)
 /**
  * ### inb
  * 
- * Получает 8-разрядное значение из места ввода-вывода.
+ * Получить 8-разрядное значение из места ввода-вывода.
  */
 static inline uint8_t inb(uint16_t port)
 {
@@ -91,7 +88,7 @@ static inline uint8_t inb(uint16_t port)
 /**
  * ### inw
  * 
- * Получает 16-разрядное значение из места ввода-вывода.
+ * Получить 16-разрядное значение из места ввода-вывода.
  */
 static inline uint16_t inw(uint16_t port)
 {
@@ -107,7 +104,7 @@ static inline uint16_t inw(uint16_t port)
 /**
  * ### inl
  * 
- * Получает 32-разрядное значение из места ввода-вывода.
+ * Получить 32-разрядное значение из места ввода-вывода.
  */
 static inline uint32_t inl(uint16_t port)
 {
@@ -123,7 +120,7 @@ static inline uint32_t inl(uint16_t port)
 /**
  * ### io_wait
  * 
- * Ожидание в течение очень короткого промежутка времени (обычно от 1 до 4 микросекунд). Полезно для реализации небольшой задержки при переназначении PIC на старом оборудовании или в целом в качестве простого, но неточного ожидания. 
+ * Ожидать в течение очень короткого промежутка времени (обычно от 1 до 4 микросекунд).
  */
 static inline void io_wait(void)
 {
@@ -133,7 +130,7 @@ static inline void io_wait(void)
 /**
  * ### shutdown
  * 
- * Check https://wiki.osdev.org/Shutdown
+ * Выключить машину
  */
 static inline void shutdown(void)
 {
@@ -153,7 +150,7 @@ static inline void shutdown(void)
 /**
  * ### cpu_reset
  * 
- * Вызывает немедленную перезагрузку процессора, иначе зависание
+ * Сброс процессора
  */
 static inline void cpu_reset(void)
 {

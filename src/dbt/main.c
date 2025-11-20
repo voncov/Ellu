@@ -1,15 +1,19 @@
 /**
  * Dual Boot Technology
- * Исходный: src/dualboot/main.c
  * 
- * Главный файл мультизагрузчика Ellu
+ * Модуль мультизагрузчика Ellu
  */
-
-#include <stdint.h>
+#include <stdio.h>
 #include <cpu/procio.h>
+#include <ports/COMX/UART.h>
 
 void main(void) {
-    while (1) {}
+    COMX_PORT port = COM1;
+    init_serial(port);
+    STDIO_TYPE mode = SERIAL;
+    set_io_mode(mode);
+    print("Hello, World!");
+    while (1);
     // Альтернативный метод, если вариант сверху падёт из-за break;
     halt();
 }
