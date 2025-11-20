@@ -7,6 +7,7 @@ All notable changes to this project will be documented in this file.
 ### 🚀 Features
 
 - Добавлен новый workflow.
+- *(libc)* (20-11-2025) Добавлен custom-libc-stddef
 
 ### 🚜 Refactor
 
