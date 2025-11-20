@@ -14,6 +14,7 @@ All notable changes to this project will be documented in this file.
 ### 🐛 Bug Fixes
 
 - *(dbt)* (20-11-2025) Исправлен недостижимый код в dbt/main.c
+- *(krnl)* (20-11-2025) Исправлен недостижимый код в krnl/main.c
 
 ### 🚜 Refactor
 
