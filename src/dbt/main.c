@@ -12,8 +12,6 @@ void main(void) {
     init_serial(port);
     IO_MODE mode = SERIAL;
     set_io_mode(mode);
-    print("Hello, World!");
+
     while (1);
-    // Альтернативный метод, если вариант сверху падёт из-за break;
-    halt();
 }
