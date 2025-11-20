@@ -9,6 +9,7 @@ All notable changes to this project will be documented in this file.
 - Добавлен новый workflow.
 - *(libc)* (20-11-2025) Добавлен custom-libc-stddef
 - *(system)* (20-11-2025) Добавлен UART ввод/вывод в COM1-COM8 порты
+- *(libc/dbt)* (20-11-2025) Добавлен custom-libc-stdio и изменён main в dbt
 
 ### 🚜 Refactor
 
