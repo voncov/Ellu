@@ -11,6 +11,10 @@ All notable changes to this project will be documented in this file.
 - *(system)* (20-11-2025) Добавлен UART ввод/вывод в COM1-COM8 порты
 - *(libc/dbt)* (20-11-2025) Добавлен custom-libc-stdio и изменён main в dbt
 
+### 🐛 Bug Fixes
+
+- *(dbt)* (20-11-2025) Исправлен недостижимый код в dbt/main.c
+
 ### 🚜 Refactor
 
 - *(dbt)* Проведён рефакторинг всего C-кода
