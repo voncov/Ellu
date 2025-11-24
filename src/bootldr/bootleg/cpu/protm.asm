@@ -35,4 +35,6 @@ initpm32:
     mov fs, ax
     mov gs, ax
 
+    ; mov esp, 0x90000
+
     jmp CODE_SEG:_KRNL_ADDR

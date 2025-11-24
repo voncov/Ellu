@@ -3,6 +3,50 @@
  */
 #include "string.h"
 
+// Безопасное деление 64-битного числа на 64-битное
+uint64_t __udivmoddi4(uint64_t num, uint64_t den, uint64_t* rem)
+{
+    if (den == 0) {
+        if (rem) *rem = 0;
+        return 0; // деление на 0
+    }
+
+    uint64_t quotient = 0;
+    uint64_t qbit = 1;
+
+    // Сдвигаем делитель влево, пока он меньше числа
+    while ((int64_t)den >= 0 && den < num) {
+        den <<= 1;
+        qbit <<= 1;
+    }
+
+    while (qbit) {
+        if (num >= den) {
+            num -= den;
+            quotient |= qbit;
+        }
+        den >>= 1;
+        qbit >>= 1;
+    }
+
+    if (rem)
+        *rem = num;
+
+    return quotient;
+}
+
+// Вызов для GCC: unsigned division
+uint64_t __udivdi3(uint64_t a, uint64_t b) {
+    return __udivmoddi4(a, b, 0);
+}
+
+// Вызов для GCC: unsigned modulo
+uint64_t __umoddi3(uint64_t a, uint64_t b) {
+    uint64_t r;
+    __udivmoddi4(a, b, &r);
+    return r;
+}
+
 static void buf_putc(char* buffer, size_t size, size_t* pos, char c) {
     if (*pos + 1 < size)
         buffer[*pos] = c;
@@ -93,39 +137,6 @@ static int ftoa(double d, char* buf, int precision) {
     *buf = 0;
     return buf - start;
 }
-
-uint64_t __udivmoddi4(uint64_t num, uint64_t den, uint64_t* rem)
-{
-    // Деление на ноль — undefined, но чтобы не бахнуло:
-    if (den == 0) {
-        if (rem) *rem = 0;
-        return 0;
-    }
-
-    uint64_t quotient = 0;
-    uint64_t qbit = 1;
-
-    // Нормализация: двигаем делитель так, чтобы его MSB был рядом с числителем
-    while ((int64_t)den >= 0 && den < num) {
-        den <<= 1;
-        qbit <<= 1;
-    }
-
-    while (qbit) {
-        if (num >= den) {
-            num -= den;
-            quotient |= qbit;
-        }
-        den >>= 1;
-        qbit >>= 1;
-    }
-
-    if (rem)
-        *rem = num;
-
-    return quotient;
-}
-
 
 int vsnprintf(char* buffer, size_t size, const char* fmt, va_list args) {
     size_t pos = 0;
@@ -303,4 +314,12 @@ int sprintf(char* buffer, const char* fmt, ...) {
 
 int vsprintf(char* buffer, const char* fmt, va_list a) {
     return vsnprintf(buffer, (size_t)-1, fmt, a);
+}
+
+void *memset(void *dest, int val, uint32_t len)
+{
+    uint8_t *ptr = (uint8_t*)dest;
+    for (uint32_t i = 0; i < len; i++)
+        ptr[i] = (uint8_t)val;
+    return dest;
 }

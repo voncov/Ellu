@@ -196,6 +196,16 @@ static inline void cpu_reset(void)
 }
 
 /**
+ * ### full_stop
+ * 
+ * Полный останов процессора
+ */
+static inline void full_stop(void)
+{
+    __asm__ __volatile__("cli; hlt");
+}
+
+/**
  * ### PIC_sendEOI
  * 
  * Отправка в PIC завершения обработки прерывания (IRQ)

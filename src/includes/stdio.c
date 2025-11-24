@@ -3,7 +3,7 @@
  */
 #include "stdio.h"
 
-static IO_MODE curr = VGA;
+static IO_MODE curr = SERIAL;
 
 /**
  * ### print

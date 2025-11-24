@@ -7,7 +7,7 @@ org 0x7C00
 
 ; Определяем глобальную константу числа секторов которые идут в текущем диске после
 ;   512 байт загрузчика.
-_KRNL_SECTORS equ 9
+_KRNL_SECTORS equ 15
 
 ; Прыгаем в `start`
 jmp start
@@ -20,7 +20,7 @@ start:
     mov ds, ax
     mov es, ax
     mov ss, ax
-    mov sp, 0x7C00
+    mov sp, 0x07C0
 
     sti
 
